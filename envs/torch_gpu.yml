@@ -1,0 +1,34 @@
+name: torch
+channels:
+  - conda-forge
+  - pytorch
+  - fastai
+  - defaults
+dependencies:
+  - python=3.8
+  - ipython
+  - notebook
+  - ipywidgets
+  - conda
+  - nbdev
+  - numpy
+  - scipy
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - seaborn
+  - arviz
+  - pytorch 
+  - torchvision 
+  - torchaudio 
+  - cudatoolkit=11.3
+  - rdkit
+  - nglview
+  - biopython
+  - easydict
+  - fair-esm
+  - pre-commit
+  - pip
+  - pip:
+    - rdatasets
+    - -e /home/ma/git/insighthunter

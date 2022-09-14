@@ -1,0 +1,35 @@
+name: rain
+channels:
+  - conda-forge
+  - fastai
+  - defaults
+dependencies:
+  - python=3.8
+  - ipython
+  - notebook
+  - ipywidgets
+  - conda
+  - nbdev
+  - numpy
+  - scipy
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - seaborn
+  - arviz
+  - py3dmol
+  - mdanalysis
+  - biopandas
+  - rdkit
+  - prolif
+  - openmm=7.6
+  - pdbfixer
+  - ambertools
+  - compilers
+  - parmed
+  - openff-toolkit
+  - openbabel
+  - pip
+  - pip:
+    - rdatasets
+    - pybel

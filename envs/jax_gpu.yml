@@ -1,0 +1,25 @@
+name: jax
+channels:
+  - conda-forge
+  - nvidia
+  - fastai
+  - defaults
+dependencies:
+  - python=3.8
+  - ipython
+  - notebook
+  - ipywidgets
+  - conda
+  - nbdev
+  - numpy
+  - scipy
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - seaborn
+  - arviz
+  - jax
+  - cuda-nvcc
+  - pip
+  - pip:
+    - rdatasets
