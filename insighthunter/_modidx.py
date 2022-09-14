@@ -5,4 +5,4 @@ d = { 'settings': { 'branch': 'master',
                 'doc_host': 'https://riversdark.github.io',
                 'git_url': 'https://github.com/riversdark/insighthunter',
                 'lib_path': 'insighthunter'},
-  'syms': {'insighthunter.core': {'insighthunter.core.foo': ('core.html#foo', 'insighthunter/core.py')}}}
+  'syms': {'insighthunter.core': {'insighthunter.core.say_hello': ('core.html#say_hello', 'insighthunter/core.py')}}}
