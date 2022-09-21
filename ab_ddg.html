@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>insighthunter - more tests</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="insighthunter - more tests">
+<meta property="og:description" content="Github">
+<meta property="og:site-name" content="insighthunter">
+<meta name="twitter:title" content="insighthunter - more tests">
+<meta name="twitter:description" content="Github">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">insighthunter</span>
+    </a>
+  </div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">more tests</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">insighthunter</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./core.html" class="sidebar-item-text sidebar-link">core</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ab_ddg.html" class="sidebar-item-text sidebar-link active">more tests</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#config" id="toc-config" class="nav-link active" data-scroll-target="#config">config</a></li>
+  <li><a href="#run" id="toc-run" class="nav-link" data-scroll-target="#run">run</a></li>
+  <li><a href="#collect" id="toc-collect" class="nav-link" data-scroll-target="#collect">collect</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/riversdark/insighthunter/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">more tests</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.linalg</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> BiopythonWarning</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.PDB <span class="im">import</span> Selection</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.PDB.PDBParser <span class="im">import</span> PDBParser</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio.PDB.Polypeptide <span class="im">import</span> three_to_one, three_to_index, is_aa</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data._utils.collate <span class="im">import</span> default_collate</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> models.geo_ddg.predictor <span class="im">import</span> DDGPredictor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="https://github.com/HeliXonProtein/binding-ddg-predictor">Github</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(torch.cuda.current_device())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BlackHole(<span class="bu">object</span>):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__setattr__</span>(<span class="va">self</span>, name, value):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getattr__</span>(<span class="va">self</span>, name):</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> seed_all(seed):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    torch.backends.cudnn.deterministic <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    torch.manual_seed(seed)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    torch.cuda.manual_seed_all(seed)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    np.random.seed(seed)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    random.seed(seed)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> recursive_to(obj, device):</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(obj, torch.Tensor):</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> obj.cuda(device<span class="op">=</span>device, non_blocking<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">RuntimeError</span>:</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> obj.to(device)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">isinstance</span>(obj, <span class="bu">list</span>):</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [recursive_to(o, device<span class="op">=</span>device) <span class="cf">for</span> o <span class="kw">in</span> obj]</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">isinstance</span>(obj, <span class="bu">tuple</span>):</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (recursive_to(o, device<span class="op">=</span>device) <span class="cf">for</span> o <span class="kw">in</span> obj)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">isinstance</span>(obj, <span class="bu">dict</span>):</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {k: recursive_to(v, device<span class="op">=</span>device) <span class="cf">for</span> k, v <span class="kw">in</span> obj.items()}</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> obj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>NON_STANDARD_SUBSTITUTIONS <span class="op">=</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'2AS'</span>:<span class="st">'ASP'</span>, <span class="st">'3AH'</span>:<span class="st">'HIS'</span>, <span class="st">'5HP'</span>:<span class="st">'GLU'</span>, <span class="st">'ACL'</span>:<span class="st">'ARG'</span>, <span class="st">'AGM'</span>:<span class="st">'ARG'</span>, <span class="st">'AIB'</span>:<span class="st">'ALA'</span>, <span class="st">'ALM'</span>:<span class="st">'ALA'</span>, <span class="st">'ALO'</span>:<span class="st">'THR'</span>, <span class="st">'ALY'</span>:<span class="st">'LYS'</span>, <span class="st">'ARM'</span>:<span class="st">'ARG'</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ASA'</span>:<span class="st">'ASP'</span>, <span class="st">'ASB'</span>:<span class="st">'ASP'</span>, <span class="st">'ASK'</span>:<span class="st">'ASP'</span>, <span class="st">'ASL'</span>:<span class="st">'ASP'</span>, <span class="st">'ASQ'</span>:<span class="st">'ASP'</span>, <span class="st">'AYA'</span>:<span class="st">'ALA'</span>, <span class="st">'BCS'</span>:<span class="st">'CYS'</span>, <span class="st">'BHD'</span>:<span class="st">'ASP'</span>, <span class="st">'BMT'</span>:<span class="st">'THR'</span>, <span class="st">'BNN'</span>:<span class="st">'ALA'</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'BUC'</span>:<span class="st">'CYS'</span>, <span class="st">'BUG'</span>:<span class="st">'LEU'</span>, <span class="st">'C5C'</span>:<span class="st">'CYS'</span>, <span class="st">'C6C'</span>:<span class="st">'CYS'</span>, <span class="st">'CAS'</span>:<span class="st">'CYS'</span>, <span class="st">'CCS'</span>:<span class="st">'CYS'</span>, <span class="st">'CEA'</span>:<span class="st">'CYS'</span>, <span class="st">'CGU'</span>:<span class="st">'GLU'</span>, <span class="st">'CHG'</span>:<span class="st">'ALA'</span>, <span class="st">'CLE'</span>:<span class="st">'LEU'</span>, <span class="st">'CME'</span>:<span class="st">'CYS'</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CSD'</span>:<span class="st">'ALA'</span>, <span class="st">'CSO'</span>:<span class="st">'CYS'</span>, <span class="st">'CSP'</span>:<span class="st">'CYS'</span>, <span class="st">'CSS'</span>:<span class="st">'CYS'</span>, <span class="st">'CSW'</span>:<span class="st">'CYS'</span>, <span class="st">'CSX'</span>:<span class="st">'CYS'</span>, <span class="st">'CXM'</span>:<span class="st">'MET'</span>, <span class="st">'CY1'</span>:<span class="st">'CYS'</span>, <span class="st">'CY3'</span>:<span class="st">'CYS'</span>, <span class="st">'CYG'</span>:<span class="st">'CYS'</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CYM'</span>:<span class="st">'CYS'</span>, <span class="st">'CYQ'</span>:<span class="st">'CYS'</span>, <span class="st">'DAH'</span>:<span class="st">'PHE'</span>, <span class="st">'DAL'</span>:<span class="st">'ALA'</span>, <span class="st">'DAR'</span>:<span class="st">'ARG'</span>, <span class="st">'DAS'</span>:<span class="st">'ASP'</span>, <span class="st">'DCY'</span>:<span class="st">'CYS'</span>, <span class="st">'DGL'</span>:<span class="st">'GLU'</span>, <span class="st">'DGN'</span>:<span class="st">'GLN'</span>, <span class="st">'DHA'</span>:<span class="st">'ALA'</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DHI'</span>:<span class="st">'HIS'</span>, <span class="st">'DIL'</span>:<span class="st">'ILE'</span>, <span class="st">'DIV'</span>:<span class="st">'VAL'</span>, <span class="st">'DLE'</span>:<span class="st">'LEU'</span>, <span class="st">'DLY'</span>:<span class="st">'LYS'</span>, <span class="st">'DNP'</span>:<span class="st">'ALA'</span>, <span class="st">'DPN'</span>:<span class="st">'PHE'</span>, <span class="st">'DPR'</span>:<span class="st">'PRO'</span>, <span class="st">'DSN'</span>:<span class="st">'SER'</span>, <span class="st">'DSP'</span>:<span class="st">'ASP'</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DTH'</span>:<span class="st">'THR'</span>, <span class="st">'DTR'</span>:<span class="st">'TRP'</span>, <span class="st">'DTY'</span>:<span class="st">'TYR'</span>, <span class="st">'DVA'</span>:<span class="st">'VAL'</span>, <span class="st">'EFC'</span>:<span class="st">'CYS'</span>, <span class="st">'FLA'</span>:<span class="st">'ALA'</span>, <span class="st">'FME'</span>:<span class="st">'MET'</span>, <span class="st">'GGL'</span>:<span class="st">'GLU'</span>, <span class="st">'GL3'</span>:<span class="st">'GLY'</span>, <span class="st">'GLZ'</span>:<span class="st">'GLY'</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GMA'</span>:<span class="st">'GLU'</span>, <span class="st">'GSC'</span>:<span class="st">'GLY'</span>, <span class="st">'HAC'</span>:<span class="st">'ALA'</span>, <span class="st">'HAR'</span>:<span class="st">'ARG'</span>, <span class="st">'HIC'</span>:<span class="st">'HIS'</span>, <span class="st">'HIP'</span>:<span class="st">'HIS'</span>, <span class="st">'HMR'</span>:<span class="st">'ARG'</span>, <span class="st">'HPQ'</span>:<span class="st">'PHE'</span>, <span class="st">'HTR'</span>:<span class="st">'TRP'</span>, <span class="st">'HYP'</span>:<span class="st">'PRO'</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'IAS'</span>:<span class="st">'ASP'</span>, <span class="st">'IIL'</span>:<span class="st">'ILE'</span>, <span class="st">'IYR'</span>:<span class="st">'TYR'</span>, <span class="st">'KCX'</span>:<span class="st">'LYS'</span>, <span class="st">'LLP'</span>:<span class="st">'LYS'</span>, <span class="st">'LLY'</span>:<span class="st">'LYS'</span>, <span class="st">'LTR'</span>:<span class="st">'TRP'</span>, <span class="st">'LYM'</span>:<span class="st">'LYS'</span>, <span class="st">'LYZ'</span>:<span class="st">'LYS'</span>, <span class="st">'MAA'</span>:<span class="st">'ALA'</span>, <span class="st">'MEN'</span>:<span class="st">'ASN'</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MHS'</span>:<span class="st">'HIS'</span>, <span class="st">'MIS'</span>:<span class="st">'SER'</span>, <span class="st">'MLE'</span>:<span class="st">'LEU'</span>, <span class="st">'MPQ'</span>:<span class="st">'GLY'</span>, <span class="st">'MSA'</span>:<span class="st">'GLY'</span>, <span class="st">'MSE'</span>:<span class="st">'MET'</span>, <span class="st">'MVA'</span>:<span class="st">'VAL'</span>, <span class="st">'NEM'</span>:<span class="st">'HIS'</span>, <span class="st">'NEP'</span>:<span class="st">'HIS'</span>, <span class="st">'NLE'</span>:<span class="st">'LEU'</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'NLN'</span>:<span class="st">'LEU'</span>, <span class="st">'NLP'</span>:<span class="st">'LEU'</span>, <span class="st">'NMC'</span>:<span class="st">'GLY'</span>, <span class="st">'OAS'</span>:<span class="st">'SER'</span>, <span class="st">'OCS'</span>:<span class="st">'CYS'</span>, <span class="st">'OMT'</span>:<span class="st">'MET'</span>, <span class="st">'PAQ'</span>:<span class="st">'TYR'</span>, <span class="st">'PCA'</span>:<span class="st">'GLU'</span>, <span class="st">'PEC'</span>:<span class="st">'CYS'</span>, <span class="st">'PHI'</span>:<span class="st">'PHE'</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PHL'</span>:<span class="st">'PHE'</span>, <span class="st">'PR3'</span>:<span class="st">'CYS'</span>, <span class="st">'PRR'</span>:<span class="st">'ALA'</span>, <span class="st">'PTR'</span>:<span class="st">'TYR'</span>, <span class="st">'PYX'</span>:<span class="st">'CYS'</span>, <span class="st">'SAC'</span>:<span class="st">'SER'</span>, <span class="st">'SAR'</span>:<span class="st">'GLY'</span>, <span class="st">'SCH'</span>:<span class="st">'CYS'</span>, <span class="st">'SCS'</span>:<span class="st">'CYS'</span>, <span class="st">'SCY'</span>:<span class="st">'CYS'</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SEL'</span>:<span class="st">'SER'</span>, <span class="st">'SEP'</span>:<span class="st">'SER'</span>, <span class="st">'SET'</span>:<span class="st">'SER'</span>, <span class="st">'SHC'</span>:<span class="st">'CYS'</span>, <span class="st">'SHR'</span>:<span class="st">'LYS'</span>, <span class="st">'SMC'</span>:<span class="st">'CYS'</span>, <span class="st">'SOC'</span>:<span class="st">'CYS'</span>, <span class="st">'STY'</span>:<span class="st">'TYR'</span>, <span class="st">'SVA'</span>:<span class="st">'SER'</span>, <span class="st">'TIH'</span>:<span class="st">'ALA'</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'TPL'</span>:<span class="st">'TRP'</span>, <span class="st">'TPO'</span>:<span class="st">'THR'</span>, <span class="st">'TPQ'</span>:<span class="st">'ALA'</span>, <span class="st">'TRG'</span>:<span class="st">'LYS'</span>, <span class="st">'TRO'</span>:<span class="st">'TRP'</span>, <span class="st">'TYB'</span>:<span class="st">'TYR'</span>, <span class="st">'TYI'</span>:<span class="st">'TYR'</span>, <span class="st">'TYQ'</span>:<span class="st">'TYR'</span>, <span class="st">'TYS'</span>:<span class="st">'TYR'</span>, <span class="st">'TYY'</span>:<span class="st">'TYR'</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>RESIDUE_SIDECHAIN_POSTFIXES <span class="op">=</span> {</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>: [<span class="st">'B'</span>],</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'R'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>, <span class="st">'Z'</span>, <span class="st">'H1'</span>, <span class="st">'H2'</span>],</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'N'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D1'</span>, <span class="st">'D2'</span>],</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'D'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D1'</span>, <span class="st">'D2'</span>],</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>],</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">'E'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>],</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Q'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>],</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">'G'</span>: [],</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">'H'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D1'</span>, <span class="st">'D2'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>],</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">'I'</span>: [<span class="st">'B'</span>, <span class="st">'G1'</span>, <span class="st">'G2'</span>, <span class="st">'D1'</span>],</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">'L'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D1'</span>, <span class="st">'D2'</span>],</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'K'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>, <span class="st">'Z'</span>],</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">'M'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>],</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'F'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D1'</span>, <span class="st">'D2'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>, <span class="st">'Z'</span>],</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'P'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D'</span>],</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'S'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>],</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'T'</span>: [<span class="st">'B'</span>, <span class="st">'G1'</span>, <span class="st">'G2'</span>],</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">'W'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D1'</span>, <span class="st">'D2'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>, <span class="st">'E3'</span>, <span class="st">'Z2'</span>, <span class="st">'Z3'</span>, <span class="st">'H2'</span>],</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Y'</span>: [<span class="st">'B'</span>, <span class="st">'G'</span>, <span class="st">'D1'</span>, <span class="st">'D2'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>, <span class="st">'Z'</span>, <span class="st">'H'</span>],    </span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">'V'</span>: [<span class="st">'B'</span>, <span class="st">'G1'</span>, <span class="st">'G2'</span>],</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>GLY_INDEX <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>ATOM_N, ATOM_CA, ATOM_C, ATOM_O, ATOM_CB <span class="op">=</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> augmented_three_to_one(three):</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> three <span class="kw">in</span> NON_STANDARD_SUBSTITUTIONS:</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        three <span class="op">=</span> NON_STANDARD_SUBSTITUTIONS[three]</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> three_to_one(three)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> augmented_three_to_index(three):</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> three <span class="kw">in</span> NON_STANDARD_SUBSTITUTIONS:</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>        three <span class="op">=</span> NON_STANDARD_SUBSTITUTIONS[three]</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> three_to_index(three)</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> augmented_is_aa(three):</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> three <span class="kw">in</span> NON_STANDARD_SUBSTITUTIONS:</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>        three <span class="op">=</span> NON_STANDARD_SUBSTITUTIONS[three]</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> is_aa(three, standard<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_hetero_residue(res):</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(res.<span class="bu">id</span>[<span class="dv">0</span>].strip()) <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_atom_name_postfix(atom):</span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> atom.get_name()</span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> name <span class="kw">in</span> (<span class="st">'N'</span>, <span class="st">'CA'</span>, <span class="st">'C'</span>, <span class="st">'O'</span>):</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> name</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> name[<span class="op">-</span><span class="dv">1</span>].isnumeric():</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> name[<span class="op">-</span><span class="dv">2</span>:]</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> name[<span class="op">-</span><span class="dv">1</span>:]</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_residue_pos14(res):</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>    pos14 <span class="op">=</span> torch.full([<span class="dv">14</span>, <span class="dv">3</span>], <span class="bu">float</span>(<span class="st">'inf'</span>))</span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>    suffix_to_atom <span class="op">=</span> {get_atom_name_postfix(a):a <span class="cf">for</span> a <span class="kw">in</span> res.get_atoms()}</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    atom_order <span class="op">=</span> [<span class="st">'N'</span>, <span class="st">'CA'</span>, <span class="st">'C'</span>, <span class="st">'O'</span>] <span class="op">+</span> RESIDUE_SIDECHAIN_POSTFIXES[augmented_three_to_one(res.get_resname())]</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, atom_suffix <span class="kw">in</span> <span class="bu">enumerate</span>(atom_order):</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> atom_suffix <span class="kw">not</span> <span class="kw">in</span> suffix_to_atom: <span class="cf">continue</span></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>        pos14[i,<span class="dv">0</span>], pos14[i,<span class="dv">1</span>], pos14[i,<span class="dv">2</span>] <span class="op">=</span> suffix_to_atom[atom_suffix].get_coord().tolist()</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pos14</span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_pdb(path, model_id<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>    warnings.simplefilter(<span class="st">'ignore'</span>, BiopythonWarning)</span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>    parser <span class="op">=</span> PDBParser()</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>    structure <span class="op">=</span> parser.get_structure(<span class="va">None</span>, path)</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parse_complex(structure, model_id)</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_complex(structure, model_id<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> model_id <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>        structure <span class="op">=</span> structure[model_id]</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>    chains <span class="op">=</span> Selection.unfold_entities(structure, <span class="st">'C'</span>)</span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>    aa, resseq, icode, seq <span class="op">=</span> [], [], [], []</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>    pos14, pos14_mask <span class="op">=</span> [], []</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>    chain_id, chain_seq <span class="op">=</span> [], []</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, chain <span class="kw">in</span> <span class="bu">enumerate</span>(chains):</span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>        seq_this <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> res <span class="kw">in</span> chain:</span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>            resname <span class="op">=</span> res.get_resname()</span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> augmented_is_aa(resname): <span class="cf">continue</span></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> (res.has_id(<span class="st">'CA'</span>) <span class="kw">and</span> res.has_id(<span class="st">'C'</span>) <span class="kw">and</span> res.has_id(<span class="st">'N'</span>)): <span class="cf">continue</span></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Chain</span></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>            chain_id.append(chain.get_id())</span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>            chain_seq.append(i<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Residue types</span></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>            restype <span class="op">=</span> augmented_three_to_index(resname)</span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>            aa.append(restype)</span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Atom coordinates</span></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>            pos14_this <span class="op">=</span> get_residue_pos14(res)</span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>            pos14_mask_this <span class="op">=</span> pos14_this.isfinite()</span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>            pos14.append(pos14_this.nan_to_num(posinf<span class="op">=</span><span class="dv">99999</span>))</span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>            pos14_mask.append(pos14_mask_this)</span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Sequential number</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>            resseq_this <span class="op">=</span> <span class="bu">int</span>(res.get_id()[<span class="dv">1</span>])</span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>            icode_this <span class="op">=</span> res.get_id()[<span class="dv">2</span>]</span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> seq_this <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>                seq_this <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>                d_resseq <span class="op">=</span> resseq_this <span class="op">-</span> resseq[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> d_resseq <span class="op">==</span> <span class="dv">0</span>: seq_this <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>: seq_this <span class="op">+=</span> d_resseq</span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>            resseq.append(resseq_this)</span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>            icode.append(icode_this)</span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>            seq.append(seq_this)</span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(aa) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>        <span class="st">'name'</span>: structure.get_id(),</span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Chain</span></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>        <span class="st">'chain_id'</span>: <span class="st">''</span>.join(chain_id),</span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>        <span class="st">'chain_seq'</span>: torch.LongTensor(chain_seq),</span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Sequence</span></span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a>        <span class="st">'aa'</span>: torch.LongTensor(aa), </span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>        <span class="st">'resseq'</span>: torch.LongTensor(resseq), </span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>        <span class="st">'icode'</span>: <span class="st">''</span>.join(icode), </span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>        <span class="st">'seq'</span>: torch.LongTensor(seq), </span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Atom positions</span></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a>        <span class="st">'pos14'</span>: torch.stack(pos14), </span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a>        <span class="st">'pos14_mask'</span>: torch.stack(pos14_mask),</span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PaddingCollate(<span class="bu">object</span>):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, length_ref_key<span class="op">=</span><span class="st">'mutation_mask'</span>, pad_values<span class="op">=</span>{<span class="st">'aa'</span>: <span class="dv">20</span>, <span class="st">'pos14'</span>: <span class="bu">float</span>(<span class="st">'999'</span>), <span class="st">'icode'</span>: <span class="st">' '</span>, <span class="st">'chain_id'</span>: <span class="st">'-'</span>}, donot_pad<span class="op">=</span>{<span class="st">'foldx'</span>}, eight<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.length_ref_key <span class="op">=</span> length_ref_key</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.pad_values <span class="op">=</span> pad_values</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.donot_pad <span class="op">=</span> donot_pad</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.eight <span class="op">=</span> eight</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _pad_last(<span class="va">self</span>, x, n, value<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(x, torch.Tensor):</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">assert</span> x.size(<span class="dv">0</span>) <span class="op">&lt;=</span> n</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> x.size(<span class="dv">0</span>) <span class="op">==</span> n:</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> x</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>            pad_size <span class="op">=</span> [n <span class="op">-</span> x.size(<span class="dv">0</span>)] <span class="op">+</span> <span class="bu">list</span>(x.shape[<span class="dv">1</span>:])</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            pad <span class="op">=</span> torch.full(pad_size, fill_value<span class="op">=</span>value).to(x)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> torch.cat([x, pad], dim<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">isinstance</span>(x, <span class="bu">list</span>):</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>            pad <span class="op">=</span> [value] <span class="op">*</span> (n <span class="op">-</span> <span class="bu">len</span>(x))</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x <span class="op">+</span> pad</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">isinstance</span>(x, <span class="bu">str</span>):</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> value <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># Won't pad strings if not specified</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> x</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            pad <span class="op">=</span> value <span class="op">*</span> (n <span class="op">-</span> <span class="bu">len</span>(x))</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x <span class="op">+</span> pad</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">isinstance</span>(x, <span class="bu">dict</span>):</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>            padded <span class="op">=</span> {}</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k, v <span class="kw">in</span> x.items():</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> k <span class="kw">in</span> <span class="va">self</span>.donot_pad:</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                    padded[k] <span class="op">=</span> v</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                    padded[k] <span class="op">=</span> <span class="va">self</span>._pad_last(v, n, value<span class="op">=</span><span class="va">self</span>._get_pad_value(k))</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> padded</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">@staticmethod</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _get_pad_mask(l, n):</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> torch.cat([</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>            torch.ones([l], dtype<span class="op">=</span>torch.<span class="bu">bool</span>),</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>            torch.zeros([n<span class="op">-</span>l], dtype<span class="op">=</span>torch.<span class="bu">bool</span>)</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>        ], dim<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _get_pad_value(<span class="va">self</span>, key):</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> key <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.pad_values:</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.pad_values[key]</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, data_list):</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>        max_length <span class="op">=</span> <span class="bu">max</span>([data[<span class="va">self</span>.length_ref_key].size(<span class="dv">0</span>) <span class="cf">for</span> data <span class="kw">in</span> data_list])</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.eight:</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>            max_length <span class="op">=</span> math.ceil(max_length <span class="op">/</span> <span class="dv">8</span>) <span class="op">*</span> <span class="dv">8</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>        data_list_padded <span class="op">=</span> []</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> data <span class="kw">in</span> data_list:</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>            data_padded <span class="op">=</span> {</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>                k: <span class="va">self</span>._pad_last(v, max_length, value<span class="op">=</span><span class="va">self</span>._get_pad_value(k))</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> k, v <span class="kw">in</span> data.items() <span class="cf">if</span> k <span class="kw">in</span> (<span class="st">'wt'</span>, <span class="st">'mut'</span>, <span class="st">'ddG'</span>, <span class="st">'mutation_mask'</span>, <span class="st">'index'</span>, <span class="st">'mutation'</span>)</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>            data_padded[<span class="st">'mask'</span>] <span class="op">=</span> <span class="va">self</span>._get_pad_mask(data[<span class="va">self</span>.length_ref_key].size(<span class="dv">0</span>), max_length)</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>            data_list_padded.append(data_padded)</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> default_collate(data_list_padded)</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _mask_list(l, mask):</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [l[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(l)) <span class="cf">if</span> mask[i]]</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _mask_string(s, mask):</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">''</span>.join([s[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(s)) <span class="cf">if</span> mask[i]])</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _mask_dict_recursively(d, mask):</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> {}</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k, v <span class="kw">in</span> d.items():</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(v, torch.Tensor) <span class="kw">and</span> v.size(<span class="dv">0</span>) <span class="op">==</span> mask.size(<span class="dv">0</span>):</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>            out[k] <span class="op">=</span> v[mask]</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">isinstance</span>(v, <span class="bu">list</span>) <span class="kw">and</span> <span class="bu">len</span>(v) <span class="op">==</span> mask.size(<span class="dv">0</span>):</span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>            out[k] <span class="op">=</span> _mask_list(v, mask)</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">isinstance</span>(v, <span class="bu">str</span>) <span class="kw">and</span> <span class="bu">len</span>(v) <span class="op">==</span> mask.size(<span class="dv">0</span>):</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>            out[k] <span class="op">=</span> _mask_string(v, mask)</span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">isinstance</span>(v, <span class="bu">dict</span>):</span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>            out[k] <span class="op">=</span> _mask_dict_recursively(v, mask)</span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>            out[k] <span class="op">=</span> v</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> KnnResidue(<span class="bu">object</span>):</span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, num_neighbors<span class="op">=</span><span class="dv">128</span>):</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_neighbors <span class="op">=</span> num_neighbors</span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, data):</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>        pos_CA <span class="op">=</span> data[<span class="st">'wt'</span>][<span class="st">'pos14'</span>][:, ATOM_CA]</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>        pos_CA_mut <span class="op">=</span> pos_CA[data[<span class="st">'mutation_mask'</span>]]</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>        diff <span class="op">=</span> pos_CA_mut.view(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>) <span class="op">-</span> pos_CA.view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>        dist <span class="op">=</span> torch.linalg.norm(diff, dim<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>            mask <span class="op">=</span> torch.zeros([dist.size(<span class="dv">0</span>)], dtype<span class="op">=</span>torch.<span class="bu">bool</span>)</span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>            mask[ dist.<span class="bu">min</span>(dim<span class="op">=</span><span class="dv">1</span>)[<span class="dv">0</span>].argsort()[:<span class="va">self</span>.num_neighbors] ] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">IndexError</span> <span class="im">as</span> e:</span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(data)</span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> e</span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> _mask_dict_recursively(data, mask)</span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_wt_mut_pdb_pair(wt_path, mut_path):</span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>    data_wt <span class="op">=</span> parse_pdb(wt_path)</span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>    data_mut <span class="op">=</span> parse_pdb(mut_path)</span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>    transform <span class="op">=</span> KnnResidue()</span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>    collate_fn <span class="op">=</span> PaddingCollate()</span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a>    mutation_mask <span class="op">=</span> (data_wt[<span class="st">'aa'</span>] <span class="op">!=</span> data_mut[<span class="st">'aa'</span>])</span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>    batch <span class="op">=</span> collate_fn([transform({<span class="st">'wt'</span>: data_wt, <span class="st">'mut'</span>: data_mut, <span class="st">'mutation_mask'</span>: mutation_mask})])</span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> batch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="config" class="level2">
+<h2 class="anchored" data-anchor-id="config">config</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wt_pdb <span class="op">=</span> <span class="st">'./testdata/geo_ddg/example_wt.pdb'</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mut_pdb <span class="op">=</span> <span class="st">'./testdata/geo_ddg/example_mut.pdb'</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="st">'./testdata/geo_ddg/model.pt'</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">'cuda:2'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> load_wt_mut_pdb_pair(wt_pdb, mut_pdb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> recursive_to(batch, device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ckpt <span class="op">=</span> torch.load(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> ckpt[<span class="st">'config'</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'model': {'node_feat_dim': 128,
+  'pair_feat_dim': 64,
+  'max_relpos': 32,
+  'geomattn': {'num_layers': 3, 'spatial_attn_mode': 'CB'}},
+ 'train': {'loss_weights': {'ddG': 1.0},
+  'max_iters': 10000000,
+  'val_freq': 1000,
+  'batch_size': 8,
+  'seed': 2021,
+  'max_grad_norm': 50.0,
+  'optimizer': {'type': 'adam',
+   'lr': 0.0001,
+   'weight_decay': 0.0,
+   'beta1': 0.9,
+   'beta2': 0.999},
+  'scheduler': {'type': 'plateau',
+   'factor': 0.5,
+   'patience': 10,
+   'min_lr': 1e-06}},
+ 'datasets': {'train': {'dataset_path': './data/skempi.pt'},
+  'val': {'dataset_path': './data/skempi.pt'}}}</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>weight <span class="op">=</span> ckpt[<span class="st">'model'</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>weight.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>odict_keys(['encoder.relpos_embedding.weight', 'encoder.residue_encoder.aatype_embed.weight', 'encoder.residue_encoder.torsion_embed.freq_bands', 'encoder.residue_encoder.mlp.0.weight', 'encoder.residue_encoder.mlp.0.bias', 'encoder.residue_encoder.mlp.2.weight', 'encoder.residue_encoder.mlp.2.bias', 'encoder.residue_encoder.mlp.4.weight', 'encoder.residue_encoder.mlp.4.bias', 'encoder.residue_encoder.mlp.6.weight', 'encoder.residue_encoder.mlp.6.bias', 'encoder.ga_encoder.blocks.0.spatial_coef', 'encoder.ga_encoder.blocks.0.proj_query.weight', 'encoder.ga_encoder.blocks.0.proj_key.weight', 'encoder.ga_encoder.blocks.0.proj_value.weight', 'encoder.ga_encoder.blocks.0.proj_pair_bias.weight', 'encoder.ga_encoder.blocks.0.out_transform.weight', 'encoder.ga_encoder.blocks.0.out_transform.bias', 'encoder.ga_encoder.blocks.0.layer_norm.weight', 'encoder.ga_encoder.blocks.0.layer_norm.bias', 'encoder.ga_encoder.blocks.1.spatial_coef', 'encoder.ga_encoder.blocks.1.proj_query.weight', 'encoder.ga_encoder.blocks.1.proj_key.weight', 'encoder.ga_encoder.blocks.1.proj_value.weight', 'encoder.ga_encoder.blocks.1.proj_pair_bias.weight', 'encoder.ga_encoder.blocks.1.out_transform.weight', 'encoder.ga_encoder.blocks.1.out_transform.bias', 'encoder.ga_encoder.blocks.1.layer_norm.weight', 'encoder.ga_encoder.blocks.1.layer_norm.bias', 'encoder.ga_encoder.blocks.2.spatial_coef', 'encoder.ga_encoder.blocks.2.proj_query.weight', 'encoder.ga_encoder.blocks.2.proj_key.weight', 'encoder.ga_encoder.blocks.2.proj_value.weight', 'encoder.ga_encoder.blocks.2.proj_pair_bias.weight', 'encoder.ga_encoder.blocks.2.out_transform.weight', 'encoder.ga_encoder.blocks.2.out_transform.bias', 'encoder.ga_encoder.blocks.2.layer_norm.weight', 'encoder.ga_encoder.blocks.2.layer_norm.bias', 'ddG_readout.mlp.0.weight', 'ddG_readout.mlp.0.bias', 'ddG_readout.mlp.2.weight', 'ddG_readout.mlp.2.bias', 'ddG_readout.mlp.4.weight', 'ddG_readout.mlp.4.bias', 'ddG_readout.mlp.6.weight', 'ddG_readout.mlp.6.bias', 'ddG_readout.project.weight'])</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DDGPredictor(config.model).to(device)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>model.load_state_dict(weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;All keys matched successfully&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="run" class="level2">
+<h2 class="anchored" data-anchor-id="run">run</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    pred <span class="op">=</span> model(batch[<span class="st">'wt'</span>], batch[<span class="st">'mut'</span>])</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Predicted ddG: </span><span class="sc">%.2f</span><span class="st">'</span> <span class="op">%</span> pred.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Predicted ddG: -0.30</code></pre>
+</div>
+</div>
+</section>
+<section id="collect" class="level2">
+<h2 class="anchored" data-anchor-id="collect">collect</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict_mutation_energy_change(wt_pdb, mut_pdb, model, device):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    batch <span class="op">=</span> load_wt_mut_pdb_pair(wt_pdb, mut_pdb)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    batch <span class="op">=</span> recursive_to(batch, device)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    ckpt <span class="op">=</span> torch.load(model)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> ckpt[<span class="st">'config'</span>]</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    weight <span class="op">=</span> ckpt[<span class="st">'model'</span>]</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> DDGPredictor(config.model).to(device)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    model.load_state_dict(weight)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        model.<span class="bu">eval</span>()</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        pred <span class="op">=</span> model(batch[<span class="st">'wt'</span>], batch[<span class="st">'mut'</span>])</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'Predicted ddG: </span><span class="sc">%.2f</span><span class="st">'</span> <span class="op">%</span> pred.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>wt_pdb <span class="op">=</span> <span class="st">'./testdata/geo_ddg/example_wt.pdb'</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mut_pdb <span class="op">=</span> <span class="st">'./testdata/geo_ddg/example_mut.pdb'</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="st">'./testdata/geo_ddg/model.pt'</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">'cuda:2'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>predict_mutation_energy_change(wt_pdb, mut_pdb, model, device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Predicted ddG: -0.30</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

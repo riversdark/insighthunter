@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "insighthunter",
+    "section": "",
+    "text": "pip install insighthunter"
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "insighthunter",
+    "section": "How to use",
+    "text": "How to use\nUpdate the yaml conda config files each time a new package is needed, then activate the environment update it with\nto create the conda env:\nconda env create -f env.yml\nto update the conda env after modifications:\nconda activate insight\nconda env update --file env.yml --prune"
+  },
+  {
+    "objectID": "ab_ddg.html",
+    "href": "ab_ddg.html",
+    "title": "more tests",
+    "section": "",
+    "text": "import os\nimport sys\nimport torch\nimport random\nimport torch.linalg\nimport numpy as np\n\nimport warnings\nfrom Bio import BiopythonWarning\nfrom Bio.PDB import Selection\nfrom Bio.PDB.PDBParser import PDBParser\nfrom Bio.PDB.Polypeptide import three_to_one, three_to_index, is_aa\n\nimport math\nfrom torch.utils.data._utils.collate import default_collate\n\nfrom models.geo_ddg.predictor import DDGPredictor\nGithub"
+  },
+  {
+    "objectID": "ab_ddg.html#config",
+    "href": "ab_ddg.html#config",
+    "title": "more tests",
+    "section": "config",
+    "text": "config\n\nwt_pdb = './testdata/geo_ddg/example_wt.pdb'\nmut_pdb = './testdata/geo_ddg/example_mut.pdb'\nmodel = './testdata/geo_ddg/model.pt'\ndevice = 'cuda:2'\n\n\nbatch = load_wt_mut_pdb_pair(wt_pdb, mut_pdb)\n\n\nbatch = recursive_to(batch, device)\n\n\nckpt = torch.load(model)\n\n\nconfig = ckpt['config']\nconfig\n\n{'model': {'node_feat_dim': 128,\n  'pair_feat_dim': 64,\n  'max_relpos': 32,\n  'geomattn': {'num_layers': 3, 'spatial_attn_mode': 'CB'}},\n 'train': {'loss_weights': {'ddG': 1.0},\n  'max_iters': 10000000,\n  'val_freq': 1000,\n  'batch_size': 8,\n  'seed': 2021,\n  'max_grad_norm': 50.0,\n  'optimizer': {'type': 'adam',\n   'lr': 0.0001,\n   'weight_decay': 0.0,\n   'beta1': 0.9,\n   'beta2': 0.999},\n  'scheduler': {'type': 'plateau',\n   'factor': 0.5,\n   'patience': 10,\n   'min_lr': 1e-06}},\n 'datasets': {'train': {'dataset_path': './data/skempi.pt'},\n  'val': {'dataset_path': './data/skempi.pt'}}}\n\n\n\nweight = ckpt['model']\nweight.keys()\n\nodict_keys(['encoder.relpos_embedding.weight', 'encoder.residue_encoder.aatype_embed.weight', 'encoder.residue_encoder.torsion_embed.freq_bands', 'encoder.residue_encoder.mlp.0.weight', 'encoder.residue_encoder.mlp.0.bias', 'encoder.residue_encoder.mlp.2.weight', 'encoder.residue_encoder.mlp.2.bias', 'encoder.residue_encoder.mlp.4.weight', 'encoder.residue_encoder.mlp.4.bias', 'encoder.residue_encoder.mlp.6.weight', 'encoder.residue_encoder.mlp.6.bias', 'encoder.ga_encoder.blocks.0.spatial_coef', 'encoder.ga_encoder.blocks.0.proj_query.weight', 'encoder.ga_encoder.blocks.0.proj_key.weight', 'encoder.ga_encoder.blocks.0.proj_value.weight', 'encoder.ga_encoder.blocks.0.proj_pair_bias.weight', 'encoder.ga_encoder.blocks.0.out_transform.weight', 'encoder.ga_encoder.blocks.0.out_transform.bias', 'encoder.ga_encoder.blocks.0.layer_norm.weight', 'encoder.ga_encoder.blocks.0.layer_norm.bias', 'encoder.ga_encoder.blocks.1.spatial_coef', 'encoder.ga_encoder.blocks.1.proj_query.weight', 'encoder.ga_encoder.blocks.1.proj_key.weight', 'encoder.ga_encoder.blocks.1.proj_value.weight', 'encoder.ga_encoder.blocks.1.proj_pair_bias.weight', 'encoder.ga_encoder.blocks.1.out_transform.weight', 'encoder.ga_encoder.blocks.1.out_transform.bias', 'encoder.ga_encoder.blocks.1.layer_norm.weight', 'encoder.ga_encoder.blocks.1.layer_norm.bias', 'encoder.ga_encoder.blocks.2.spatial_coef', 'encoder.ga_encoder.blocks.2.proj_query.weight', 'encoder.ga_encoder.blocks.2.proj_key.weight', 'encoder.ga_encoder.blocks.2.proj_value.weight', 'encoder.ga_encoder.blocks.2.proj_pair_bias.weight', 'encoder.ga_encoder.blocks.2.out_transform.weight', 'encoder.ga_encoder.blocks.2.out_transform.bias', 'encoder.ga_encoder.blocks.2.layer_norm.weight', 'encoder.ga_encoder.blocks.2.layer_norm.bias', 'ddG_readout.mlp.0.weight', 'ddG_readout.mlp.0.bias', 'ddG_readout.mlp.2.weight', 'ddG_readout.mlp.2.bias', 'ddG_readout.mlp.4.weight', 'ddG_readout.mlp.4.bias', 'ddG_readout.mlp.6.weight', 'ddG_readout.mlp.6.bias', 'ddG_readout.project.weight'])\n\n\n\nmodel = DDGPredictor(config.model).to(device)\nmodel.load_state_dict(weight)\n\n<All keys matched successfully>"
+  },
+  {
+    "objectID": "ab_ddg.html#run",
+    "href": "ab_ddg.html#run",
+    "title": "more tests",
+    "section": "run",
+    "text": "run\n\nwith torch.no_grad():\n    model.eval()\n    pred = model(batch['wt'], batch['mut'])\n    print('Predicted ddG: %.2f' % pred.item())\n\nPredicted ddG: -0.30"
+  },
+  {
+    "objectID": "ab_ddg.html#collect",
+    "href": "ab_ddg.html#collect",
+    "title": "more tests",
+    "section": "collect",
+    "text": "collect\n\ndef predict_mutation_energy_change(wt_pdb, mut_pdb, model, device):\n\n    batch = load_wt_mut_pdb_pair(wt_pdb, mut_pdb)\n    batch = recursive_to(batch, device)\n    ckpt = torch.load(model)\n    config = ckpt['config']\n    weight = ckpt['model']\n    model = DDGPredictor(config.model).to(device)\n    model.load_state_dict(weight)\n    with torch.no_grad():\n        model.eval()\n        pred = model(batch['wt'], batch['mut'])\n        print('Predicted ddG: %.2f' % pred.item())\n\n\nwt_pdb = './testdata/geo_ddg/example_wt.pdb'\nmut_pdb = './testdata/geo_ddg/example_mut.pdb'\nmodel = './testdata/geo_ddg/model.pt'\ndevice = 'cuda:2'\n\n\npredict_mutation_energy_change(wt_pdb, mut_pdb, model, device)\n\nPredicted ddG: -0.30"
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nsay_hello\n\n say_hello (to)\n\nSay hello to somebody\n\nsay_hello(\"Olivier\")\n\n'Hello Olivier!'\n\n\n\nassert say_hello(\"Cat\") == \"Hello Cat!\"\n\n\nfrom fastcore.test import *\n\n\ntest_eq(say_hello(\"Cat\"), \"Hello Cat!\")"
+  }
+]
