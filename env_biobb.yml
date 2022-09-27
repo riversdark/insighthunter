@@ -1,0 +1,32 @@
+name: biobb
+channels:
+  - bioconda
+  - conda-forge
+  - fastai
+  - defaults
+dependencies:
+  - python=3.8
+  - ipython
+  - autopep8
+  - biobb_io
+  - biobb_structure_utils
+  - biobb_chemistry
+  - biobb_vs
+  - biobb_model
+  - biobb_gromacs
+  - biobb_analysis
+  - conda
+  - ipywidgets=7
+  - matplotlib
+  - nbdev
+  - nglview
+  - notebook
+  - numpy
+  - ocl-icd-system
+  - pre-commit
+  - simpletraj
+  - pip
+  - plotly
+  - pip:
+    - rdatasets
+    - -e /home/ma/git/insighthunter
