@@ -1,0 +1,3 @@
+[submodule "binding-ddg-predictor"]
+	path = binding-ddg-predictor
+	url = git@github.com:HeliXonProtein/binding-ddg-predictor.git
